@@ -10,10 +10,15 @@ const Navbar = () => {
 
   const dispatch = useAppDispatch();
 
+  if (localStorage.getItem("userEmail")) {
+    dispatch(setUser(localStorage.getItem("userEmail")));
+  }
+
   const handleLogout = () => {
     console.log("Logout");
     signOut(auth).then(() => {
       dispatch(setUser(null));
+      localStorage.removeItem("userEmail");
     });
   };
 
@@ -23,7 +28,7 @@ const Navbar = () => {
         <Link to="/allbooks">All Books</Link>
       </li>
 
-      {user.email ? (
+      {user?.email ? (
         <li className="font-medium">
           <button onClick={handleLogout} className="btn btn-ghost">
             Log Out

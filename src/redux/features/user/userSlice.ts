@@ -10,6 +10,7 @@ interface IUserState {
   user: {
     email: string | null;
   };
+  loginUserEmail: string | null;
   isLoading: boolean;
   isError: boolean;
   error: string | null;
@@ -24,6 +25,7 @@ const initialState: IUserState = {
   user: {
     email: null,
   },
+  loginUserEmail: null,
   isLoading: false,
   isError: false,
   error: null,
@@ -83,6 +85,7 @@ const userSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.user.email = action.payload;
         state.isLoading = false;
+        localStorage.setItem("userEmail", action?.payload!);
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.user.email = null;
