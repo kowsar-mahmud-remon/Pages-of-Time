@@ -3,6 +3,7 @@ import Home from "../page/Home";
 import App from "../App";
 import Login from "../page/Login";
 import NotFound from "../page/NotFound";
+import SignUp from "../page/Signup";
 
 const routes = createBrowserRouter([
   {
@@ -10,8 +11,16 @@ const routes = createBrowserRouter([
     element: <App></App>,
     children: [
       {
-        path: "/login",
+        path: "/allbooks",
         element: <Login></Login>,
+      },
+      {
+        path: "/signin",
+        element: <Login></Login>,
+      },
+      {
+        path: "/signup",
+        element: <SignUp></SignUp>,
       },
     ],
   },
