@@ -4,6 +4,7 @@ import App from "../App";
 import Login from "../page/Login";
 import NotFound from "../page/NotFound";
 import SignUp from "../page/Signup";
+import AllBooks from "../page/AllBooks";
 
 const routes = createBrowserRouter([
   {
@@ -12,7 +13,7 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/allbooks",
-        element: <Login></Login>,
+        element: <AllBooks></AllBooks>,
       },
       {
         path: "/signin",
