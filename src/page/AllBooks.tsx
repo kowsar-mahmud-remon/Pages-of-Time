@@ -11,7 +11,7 @@ interface IBook {
   userEmail: string;
 }
 const AllBooks = () => {
-  const { data, isLoading, error } = useGetAllBooksQuery(undefined);
+  const { data, isLoading } = useGetAllBooksQuery(undefined);
   console.log(data?.data);
   console.log(isLoading);
 

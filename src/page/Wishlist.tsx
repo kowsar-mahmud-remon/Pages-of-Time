@@ -17,7 +17,7 @@ interface IBook {
 const Wishlist = () => {
   const { user } = useAppSelector((state) => state.user);
 
-  const { data, isLoading, error } = useGetAllBooksWishlistQuery(user?.email);
+  const { data, isLoading } = useGetAllBooksWishlistQuery(user?.email);
 
   if (isLoading) {
     return (

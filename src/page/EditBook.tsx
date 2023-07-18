@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useAppSelector } from "../redux/hook";
 import {
-  useAddBookMutation,
   useSingleBookQuery,
   useUpdateBookMutation,
 } from "../redux/features/book/bookApi";
@@ -11,15 +10,7 @@ import toast from "react-hot-toast";
 const EditBook = () => {
   const { id } = useParams();
 
-  const { data: book, isLoading } = useSingleBookQuery(id);
-
-  // if (isLoading) {
-  //   return (
-  //     <div className="w-full text-center flex justify-center my-20">
-  //       <span className=" loading loading-spinner loading-lg text-success"></span>
-  //     </div>
-  //   );
-  // }
+  const { data: book } = useSingleBookQuery(id);
 
   interface IBook {
     title: string;
