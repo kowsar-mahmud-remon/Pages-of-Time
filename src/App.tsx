@@ -1,7 +1,13 @@
 import MainLayout from "./layout/MainLayout";
+import { Toaster } from "react-hot-toast";
 
 function App() {
-  return <MainLayout></MainLayout>;
+  return (
+    <>
+      <Toaster />
+      <MainLayout></MainLayout>;
+    </>
+  );
 }
 
 export default App;

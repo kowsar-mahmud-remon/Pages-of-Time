@@ -1,8 +1,8 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import { useAppSelector } from "../redux/hook";
 import { useAddBookMutation } from "../redux/features/book/bookApi";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const AddNewBook = () => {
   interface IBook {
@@ -18,21 +18,17 @@ const AddNewBook = () => {
     formState: { errors },
   } = useForm<IBook>();
 
-  // const dispatch = useAppDispatch();
-
   const { user } = useAppSelector((state) => state.user);
 
-  const [addBook, { isLoading, isError, isSuccess }] = useAddBookMutation();
-  console.log({ isLoading, isError, isSuccess });
+  const [addBook] = useAddBookMutation();
 
   const navigate = useNavigate();
 
   const onSubmit = (data: IBook) => {
     const newBook = { ...data, userEmail: user?.email };
-    console.log(newBook);
     addBook(newBook);
-    navigate("/");
-    // dispatch(createUser({ email: data.email, password: data.password }));
+    navigate("/allbooks");
+    toast.success("Book Added Successfully");
   };
   return (
     <div className="">
