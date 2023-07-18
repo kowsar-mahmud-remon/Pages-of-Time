@@ -1,6 +1,7 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import {
+  useAddBookWishlistMutation,
   useDeleteBookMutation,
   useSingleBookQuery,
 } from "../redux/features/book/bookApi";
@@ -9,6 +10,7 @@ import { useAppSelector } from "../redux/hook";
 const BookDetails = () => {
   const { id } = useParams();
 
+  const [addBookWishlist] = useAddBookWishlistMutation();
   const [deleteBook] = useDeleteBookMutation();
   const navigate = useNavigate();
 
@@ -36,9 +38,16 @@ const BookDetails = () => {
 
     if (confirmation) {
       deleteBook(data);
+
       navigate("/allbooks");
       toast.success("Book Deleted Successfully");
     }
+  };
+
+  const handleWishlist = () => {
+    addBookWishlist(book);
+    // navigate("/allbooks");
+    toast.success("Wishlist Added Successfully");
   };
 
   return (
@@ -68,11 +77,12 @@ const BookDetails = () => {
               <Link to={`/edit-book/${book?._id}`}>
                 <button className="btn bg-[#1ac1b5]">Edit Book</button>
               </Link>
-              {/* <Link to={`/delete-book/${book?._id}`}> */}
               <button onClick={handleDeleteBook} className="btn bg-[#1ac1b5]">
                 Delete Book
               </button>
-              {/* </Link> */}
+              <button onClick={handleWishlist} className="btn bg-[#1ac1b5]">
+                wishlist
+              </button>
             </div>
           </div>
         </div>

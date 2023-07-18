@@ -9,12 +9,17 @@ import AddNewBook from "../page/AddNewBook";
 import PrivateRoute from "./PrivateRoute";
 import BookDetails from "../page/BookDetails";
 import EditBook from "../page/EditBook";
+import Wishlist from "../page/Wishlist";
 
 const routes = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
     children: [
+      {
+        path: "/home",
+        element: <Home></Home>,
+      },
       {
         path: "/allbooks",
         element: <AllBooks></AllBooks>,
@@ -24,6 +29,14 @@ const routes = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddNewBook></AddNewBook>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/wishlist",
+        element: (
+          <PrivateRoute>
+            <Wishlist></Wishlist>
           </PrivateRoute>
         ),
       },

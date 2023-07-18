@@ -25,15 +25,24 @@ const Navbar = () => {
   const menuItems = (
     <React.Fragment>
       <li className="font-medium">
+        <Link to="/home">Home</Link>
+      </li>
+      <li className="font-medium">
         <Link to="/allbooks">All Books</Link>
       </li>
 
       {user?.email ? (
-        <li className="font-medium">
-          <button onClick={handleLogout} className="btn btn-ghost">
-            Log Out
-          </button>
-        </li>
+        <>
+          <li className="font-medium">
+            <Link to="/wishlist">Wishlist</Link>
+          </li>
+
+          <li className="font-medium">
+            <button onClick={handleLogout} className="btn btn-ghost">
+              Log Out
+            </button>
+          </li>
+        </>
       ) : (
         <>
           <li className="font-medium">

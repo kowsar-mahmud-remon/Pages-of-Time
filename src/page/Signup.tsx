@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
-import { useAppDispatch } from "../redux/hook";
+import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { createUser } from "../redux/features/user/userSlice";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const SignUp = () => {
   interface SignUpFormInputs {
@@ -14,12 +16,22 @@ const SignUp = () => {
     formState: { errors },
   } = useForm<SignUpFormInputs>();
 
+  const { user, isLoading } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
+
+  const navigate = useNavigate();
 
   const onSubmit = (data: SignUpFormInputs) => {
     console.log(data);
     dispatch(createUser({ email: data.email, password: data.password }));
   };
+
+  useEffect(() => {
+    if (user.email && !isLoading) {
+      navigate("/");
+    }
+  }, [user.email, isLoading]);
+
   return (
     <div className="hero mt-10 mb-[100px] bg-base-200">
       <div className="hero-content flex-col lg:flex-row">

@@ -70,6 +70,7 @@ const userSlice = createSlice({
       .addCase(createUser.fulfilled, (state, action) => {
         state.user.email = action.payload;
         state.isLoading = false;
+        localStorage.setItem("userEmail", action?.payload!);
       })
       .addCase(createUser.rejected, (state, action) => {
         state.user.email = null;
