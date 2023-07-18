@@ -30,7 +30,7 @@ const AllBooks = () => {
       </p>
       <div className=" w-full text-center">
         <Link to="/add-new-book">
-          <button className="btn btn-success mx-5">Add New Book</button>
+          <button className="btn bg-[#1ac1b5] mx-5">Add New Book</button>
         </Link>
       </div>
       <div className="mx-5 my-10 grid grid-cols-1 lg:grid-cols-3 gap-10">
@@ -43,7 +43,7 @@ const AllBooks = () => {
               <img
                 className="w-full h-[400px]"
                 src={book?.imageUrl}
-                alt="Shoes"
+                alt="Book Image"
               />
             </figure>
             <div className="card-body">
@@ -58,8 +58,10 @@ const AllBooks = () => {
                 publication Date:{" "}
                 <span className=" font-semibold">{book?.publicationDate}</span>
               </p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
+              <div className="card-actions justify-center mt-5">
+                <Link to={`/book-details/${book?._id}`}>
+                  <button className="btn bg-[#1ac1b5]">Book Details</button>
+                </Link>
               </div>
             </div>
           </div>

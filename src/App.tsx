@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <Toaster />
-      <MainLayout></MainLayout>;
+      <MainLayout></MainLayout>
     </>
   );
 }
