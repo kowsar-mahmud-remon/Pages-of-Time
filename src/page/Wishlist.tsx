@@ -1,8 +1,5 @@
 import { Link } from "react-router-dom";
-import {
-  useGetAllBooksQuery,
-  useGetAllBooksWishlistQuery,
-} from "../redux/features/book/bookApi";
+import { useGetAllBooksWishlistQuery } from "../redux/features/book/bookApi";
 import { useAppSelector } from "../redux/hook";
 
 interface IBook {
