@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useGetAllBooksQuery } from "../redux/features/book/bookApi";
 
 interface IBook {
@@ -24,7 +25,14 @@ const AllBooks = () => {
 
   return (
     <div className="">
-      <p>Choose Your Book</p>
+      <p className="text-center my-14 text-5xl text-neutral">
+        Choose Your Book
+      </p>
+      <div className=" w-full text-center">
+        <Link to="/add-new-book">
+          <button className="btn btn-success mx-5">Add New Book</button>
+        </Link>
+      </div>
       <div className="mx-5 my-10 grid grid-cols-1 lg:grid-cols-3 gap-10">
         {data?.data.map((book: IBook) => (
           <div
